@@ -67,7 +67,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	SDL_Color colorBlack = { 0, 0, 0 };
 
 
-	Font = TTF_OpenFont("C:\\DEV\\FONTS\\georgia.ttf", 24);
+	Font = TTF_OpenFont("MEDIA\\FONTS\\georgia.ttf", 24);
 	win = SDL_CreateWindow("MAIN", 0, 0, 1280, 720, SDL_WINDOW_FULLSCREEN);
 	Screen = SDL_GetWindowSurface(win);
 
@@ -77,7 +77,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	// debug_EngineInit = Engine_Init();
 
 			//Error Handler
-	LoadingScreen = IMG_Load("C:\\DEV\\IMAGES\\Init.jpg");
+	LoadingScreen = IMG_Load("MEDIA\\IMAGES\\Init.jpg");
 	if (LoadingScreen == NULL)
 	{
 		printf("Error Loading Image Init.jpg");
@@ -86,7 +86,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	if (Font == NULL)
 	{
 		printf("Error Loading Font: Georgia");
-		return -2;
+		//return -2;
 	}
 
 	while (run)
@@ -138,9 +138,10 @@ int Engine_Main_Menu()
 int Engine_Generator_Map()
 {
 	//Sets Layer 0 of Map to 1 (GRASS)
-	for (int tmpx; tmpx >= 256; tmpx++)
+	int tmpx, tmpy;
+	for (int tmpx=0; tmpx >= 256; tmpx++)
 	{
-		for (int tmpy; tmpy >= 256; tmpy++)
+		for (int tmpy=0; tmpy >= 256; tmpy++)
 		{
 			MemoryMap[0][tmpx][tmpy] = 1;
 		}
