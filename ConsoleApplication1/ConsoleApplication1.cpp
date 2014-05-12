@@ -5,9 +5,12 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <Windows.h>
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_ttf.h"
+
+
 
 int Engine_Init();
 int Engine_Generator_Map();
@@ -21,6 +24,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int debug_MainMenu;
 	bool run;
 	run = true;
+	
 
 	// GRAPHICS INITIALIZATION
 	SDL_Surface* LoadingScreen = NULL;
@@ -62,12 +66,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	};
 
+	
 
 	SDL_Color colorWhite = { 255, 255, 255 };
 	SDL_Color colorBlack = { 0, 0, 0 };
+	std::cout << "Here we go.";
+	SDL_Delay(2000);
+	//return 0;
 
-
-	Font = TTF_OpenFont("MEDIA\\FONTS\\georgia.ttf", 24);
+	// Font = TTF_OpenFont("MEDIA\\FONTS\\georgia.ttf", 24);
 	win = SDL_CreateWindow("MAIN", 0, 0, 1280, 720, SDL_WINDOW_FULLSCREEN);
 	Screen = SDL_GetWindowSurface(win);
 
@@ -77,11 +84,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	// debug_EngineInit = Engine_Init();
 
 			//Error Handler
-	LoadingScreen = IMG_Load("MEDIA\\IMAGES\\Init.jpg");
+	LoadingScreen = IMG_Load("MEDIA/IMAGES/Init.jpg");
 	if (LoadingScreen == NULL)
 	{
 		printf("Error Loading Image Init.jpg");
-		return -1;
+//		std::cout << GetModule;
+		//return -1;
 	}
 	if (Font == NULL)
 	{
@@ -105,6 +113,10 @@ int _tmain(int argc, _TCHAR* argv[])
 			if (e.key.keysym.sym == SDLK_ESCAPE)
 			{
 				run = false;
+			}
+			if (e.key.keysym.sym == SDLK_RETURN)
+			{
+				LoadingScreen = IMG_Load("MEDIA/IMAGES/mainmenu.jpg");
 			}
 		}
 	}
